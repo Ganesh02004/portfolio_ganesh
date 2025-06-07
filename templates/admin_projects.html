@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Projects{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Manage Projects</h2>
+        <a href="/admin/projects/add" class="btn btn-primary">Add New Project</a>
+    </div>
+    
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ project.title }}</h5>
+                    <p class="card-text">{{ project.description[:100] }}...</p>
+                    <p class="text-muted">{{ project.date.strftime('%B %Y') }}</p>
+                    <div class="mb-2">
+                        {% for tech in project.technologies %}
+                        <span class="badge bg-secondary me-1">{{ tech.strip() }}</span>
+                        {% endfor %}
+                    </div>
+                    <a href="/admin/projects/edit/{{ project._id }}" class="btn btn-sm btn-outline-primary">Edit</a>
+                    <a href="/admin/projects/delete/{{ project._id }}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <a href="/admin" class="btn btn-secondary">Back to Admin</a>
+</div>
+{% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Messages{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <h2>Contact Messages</h2>
+    
+    {% for contact in contacts %}
+    <div class="card mb-3">
+        <div class="card-header d-flex justify-content-between">
+            <strong>{{ contact.name }} ({{ contact.email }})</strong>
+            <small class="text-muted">{{ contact.timestamp.strftime('%B %d, %Y at %I:%M %p') }}</small>
+        </div>
+        <div class="card-body">
+            <p>{{ contact.message }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    
+    <a href="/admin" class="btn btn-secondary">Back to Admin</a>
+</div>
+{% endblock %}

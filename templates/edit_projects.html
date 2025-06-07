@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Project{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <h2>Edit Project</h2>
+    
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Project Title</label>
+                    <input type="text" class="form-control" name="title" value="{{ project.title }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Technologies (comma-separated)</label>
+                    <input type="text" class="form-control" name="technologies" value="{{ project.technologies|join(', ') }}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">GitHub URL</label>
+                    <input type="url" class="form-control" name="github_url" value="{{ project.github_url or '' }}">
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Live Demo URL</label>
+                    <input type="url" class="form-control" name="live_url" value="{{ project.live_url or '' }}">
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Image URL</label>
+                    <input type="url" class="form-control" name="image_url" value="{{ project.image_url or '' }}">
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" name="description" rows="8" required>{{ project.description }}</textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Date</label>
+                    <input type="date" class="form-control" name="date" value="{{ project.date.strftime('%Y-%m-%d') }}" required>
+                </div>
+                
+                <div class="mb-3 form-check">
+                    <input class="form-check-input" type="checkbox" name="featured" id="featured" {% if project.featured %}checked{% endif %}>
+                    <label class="form-check-label" for="featured">Featured Project</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Update Project</button>
+            <a href="/admin/projects" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

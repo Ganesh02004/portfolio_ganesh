@@ -1,0 +1,144 @@
+// Run this below function to add the data for the first time (data template )
+
+
+
+def init_dummy_data():
+    """Initialize database with dummy data for Ganesh"""
+    
+    # Clear existing data
+    profile.delete_many({})
+    projects.delete_many({})
+    experience.delete_many({})
+    skills.delete_many({})
+    
+    # Profile data
+    profile_data = {
+        'name': 'Ganesh P',
+        'title': 'AI/ML Engineering Student',
+        'email': 'ganeshp2004@otlook.com',
+        'phone': '+91 8073532868',
+        'location': 'Bangalore, Karnataka, India',
+        'bio': 'Passionate AI/ML engineering student at BITM College with a strong foundation in machine learning, deep learning, and data science. Enthusiastic about solving real-world problems through innovative AI solutions.',
+        'linkedin': 'https://linkedin.com/in/ganesh-p-448b83264',
+        'github': ' https://github.com/Ganesh02004',
+        'website': 'https://ganesh-portfolio.dev'
+    }
+    profile.insert_one(profile_data)
+    
+    # Projects data
+    projects_data = [
+        {
+            'title': 'Stock Price Prediction using LSTM',
+            'description': 'Built a deep learning model using LSTM networks to predict stock prices with 85% accuracy. Implemented data preprocessing, feature engineering, and model optimization techniques.',
+            'technologies': ['Python', 'TensorFlow', 'Pandas', 'NumPy', 'Matplotlib'],
+            'github_url': 'https://github.com/ganesh-aiml/stock-prediction',
+            'live_url': 'https://stock-predictor-demo.herokuapp.com',
+            'image_url': 'https://via.placeholder.com/400x250/007bff/ffffff?text=Stock+Prediction',
+            'date': datetime(2024, 3, 15),
+            'featured': True
+        },
+        {
+            'title': 'Customer Sentiment Analysis',
+            'description': 'Developed a natural language processing model to analyze customer reviews and classify sentiment. Used BERT transformer model for high accuracy sentiment classification.',
+            'technologies': ['Python', 'BERT', 'Transformers', 'Flask', 'Scikit-learn'],
+            'github_url': 'https://github.com/ganesh-aiml/sentiment-analysis',
+            'live_url': 'https://sentiment-analyzer-app.herokuapp.com',
+            'image_url': 'https://via.placeholder.com/400x250/28a745/ffffff?text=Sentiment+Analysis',
+            'date': datetime(2024, 2, 20),
+            'featured': True
+        },
+        {
+            'title': 'Image Classification Web App',
+            'description': 'Created a web application for image classification using Convolutional Neural Networks. Users can upload images and get real-time predictions with confidence scores.',
+            'technologies': ['Python', 'CNN', 'OpenCV', 'Streamlit', 'Keras'],
+            'github_url': 'https://github.com/ganesh-aiml/image-classifier',
+            'live_url': 'https://image-classifier-demo.streamlit.app',
+            'image_url': 'https://via.placeholder.com/400x250/dc3545/ffffff?text=Image+Classifier',
+            'date': datetime(2024, 1, 10),
+            'featured': False
+        },
+        {
+            'title': 'Chatbot using NLP',
+            'description': 'Developed an intelligent chatbot using natural language processing techniques. Implemented intent recognition and response generation for customer service applications.',
+            'technologies': ['Python', 'NLTK', 'spaCy', 'Django', 'SQLite'],
+            'github_url': 'https://github.com/ganesh-aiml/nlp-chatbot',
+            'live_url': '',
+            'image_url': 'https://via.placeholder.com/400x250/6f42c1/ffffff?text=AI+Chatbot',
+            'date': datetime(2023, 12, 5),
+            'featured': False
+        }
+    ]
+    projects.insert_many(projects_data)
+    
+    # Experience data
+    experience_data = [
+        {
+            'company': 'TechnoSoft Solutions',
+            'position': 'AI/ML Intern',
+            'location': 'Bangalore, India',
+            'start_date': datetime(2024, 6, 1),
+            'end_date': datetime(2024, 8, 31),
+            'current': False,
+            'description': 'Worked on machine learning projects involving computer vision and natural language processing. Collaborated with senior developers to implement AI solutions for client projects.',
+            'achievements': [
+                'Developed a face recognition system with 92% accuracy',
+                'Optimized model performance reducing inference time by 40%',
+                'Presented project findings to stakeholders and clients'
+            ]
+        },
+        {
+            'company': 'DataTech Labs',
+            'position': 'Data Science Trainee',
+            'location': 'Remote',
+            'start_date': datetime(2024, 1, 15),
+            'end_date': datetime(2024, 4, 30),
+            'current': False,
+            'description': 'Participated in data science training program focusing on machine learning algorithms, statistical analysis, and data visualization techniques.',
+            'achievements': [
+                'Completed 10+ hands-on projects in machine learning',
+                'Achieved certification in Python for Data Science',
+                'Collaborated on team project for predictive analytics'
+            ]
+        }
+    ]
+    experience.insert_many(experience_data)
+    
+    # Skills data
+    skills_data = [
+        # Programming Languages
+        {'name': 'Python', 'category': 'Programming Languages', 'proficiency': 90},
+        {'name': 'R', 'category': 'Programming Languages', 'proficiency': 75},
+        {'name': 'SQL', 'category': 'Programming Languages', 'proficiency': 85},
+        {'name': 'Java', 'category': 'Programming Languages', 'proficiency': 70},
+        
+        # Machine Learning
+        {'name': 'TensorFlow', 'category': 'Machine Learning', 'proficiency': 85},
+        {'name': 'PyTorch', 'category': 'Machine Learning', 'proficiency': 80},
+        {'name': 'Scikit-learn', 'category': 'Machine Learning', 'proficiency': 90},
+        {'name': 'Keras', 'category': 'Machine Learning', 'proficiency': 85},
+        {'name': 'OpenCV', 'category': 'Machine Learning', 'proficiency': 75},
+        
+        # Data Science
+        {'name': 'Pandas', 'category': 'Data Science', 'proficiency': 90},
+        {'name': 'NumPy', 'category': 'Data Science', 'proficiency': 85},
+        {'name': 'Matplotlib', 'category': 'Data Science', 'proficiency': 80},
+        {'name': 'Seaborn', 'category': 'Data Science', 'proficiency': 75},
+        {'name': 'Jupyter', 'category': 'Data Science', 'proficiency': 85},
+        
+        # Web Development
+        {'name': 'Flask', 'category': 'Web Development', 'proficiency': 75},
+        {'name': 'Django', 'category': 'Web Development', 'proficiency': 70},
+        {'name': 'HTML/CSS', 'category': 'Web Development', 'proficiency': 80},
+        {'name': 'JavaScript', 'category': 'Web Development', 'proficiency': 65},
+        
+        # Tools & Technologies
+        {'name': 'Git', 'category': 'Tools & Technologies', 'proficiency': 85},
+        {'name': 'Docker', 'category': 'Tools & Technologies', 'proficiency': 60},
+        {'name': 'MongoDB', 'category': 'Tools & Technologies', 'proficiency': 70},
+        {'name': 'AWS', 'category': 'Tools & Technologies', 'proficiency': 55}
+    ]
+    skills.insert_many(skills_data)
+    
+    print("Dummy data initialized successfully!")
+
+init_dummy_data()

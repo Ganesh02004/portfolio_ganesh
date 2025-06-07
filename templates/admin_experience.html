@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Experience{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Manage Experience</h2>
+        <a href="/admin/experience/add" class="btn btn-primary">Add New Experience</a>
+    </div>
+    
+    {% for exp in experience %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ exp.position }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ exp.company }} | {{ exp.location }}</h6>
+            <p class="text-muted">
+                {{ exp.start_date.strftime('%b %Y') }} - 
+                {% if exp.current %}Present{% else %}{{ exp.end_date.strftime('%b %Y') }}{% endif %}
+            </p>
+            <p class="card-text">{{ exp.description }}</p>
+            <a href="/admin/experience/edit/{{ exp._id }}" class="btn btn-sm btn-outline-primary">Edit</a>
+            <a href="/admin/experience/delete/{{ exp._id }}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+    
+    <a href="/admin" class="btn btn-secondary">Back to Admin</a>
+</div>
+{% endblock %}

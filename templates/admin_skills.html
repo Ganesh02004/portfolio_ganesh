@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Skills{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Manage Skills</h2>
+        <a href="/admin/skills/add" class="btn btn-primary">Add New Skill</a>
+    </div>
+    
+    {% set skill_categories = skills | groupby('category') %}
+    {% for category, category_skills in skill_categories %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">{{ category }}</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% for skill in category_skills %}
+                <div class="col-md-4 mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span>{{ skill.name }} ({{ skill.proficiency }}%)</span>
+                        <a href="/admin/skills/delete/{{ skill._id }}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete {{ skill.name }}?')">Delete</a>
+                    </div>
+                    <div class="progress mt-1" style="height: 5px;">
+                        <div class="progress-bar" style="width: {{ skill.proficiency }}%"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+    <a href="/admin" class="btn btn-secondary">Back to Admin</a>
+</div>
+{% endblock %}
