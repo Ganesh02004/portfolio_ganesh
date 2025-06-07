@@ -25,7 +25,7 @@ A dynamic, responsive portfolio web application built with Flask, MongoDB, and B
 
 ## Demo Data
 
-The application comes pre-loaded with sample data for **Ganesh Kumar**, an AI/ML Engineering student at BITM College, including:
+The application comes pre-loaded with sample data for **Ganesh P**, an AI/ML Engineering student at BITM College, including:
 
 - 4 AI/ML projects (Stock Prediction, Sentiment Analysis, Image Classification, Chatbot)
 - 2 work experiences (AI/ML Intern, Data Science Trainee)
@@ -52,7 +52,7 @@ Before running this application, make sure you have:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/portfolio-webapp.git
+git clone https://github.com/Ganesh02004/portfolio_ganesh.git
 cd portfolio-webapp
 ```
 
