@@ -10,6 +10,15 @@ def init_dummy_data():
     projects.delete_many({})
     experience.delete_many({})
     skills.delete_many({})
+    admin_users.delete_many({})
+
+    # Create default admin user
+    admin_data = {
+        'username': 'admin',
+        'password': generate_password_hash('admin123'),
+        'created_date': datetime.now()
+    }
+    admin_users.insert_one(admin_data)
     
     # Profile data
     profile_data = {
