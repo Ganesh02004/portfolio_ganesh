@@ -242,31 +242,8 @@ Edit `static/css/style.css` to customize:
 }
 ```
 
-## Deployment
 
-### Heroku Deployment
-
-1. Create a `Procfile`:
-   ```
-   web: python app.py
-   ```
-
-2. Update `app.py` for production:
-   ```python
-   if __name__ == '__main__':
-       port = int(os.environ.get('PORT', 5000))
-       app.run(host='0.0.0.0', port=port)
-   ```
-
-3. Deploy to Heroku:
-   ```bash
-   heroku create your-app-name
-   heroku config:set SECRET_KEY=your-secret-key
-   heroku config:set MONGODB_URI=your-mongodb-atlas-uri
-   git push heroku main
-   ```
-
-### Other Deployment Options
+### Deployment Options
 - **AWS EC2**: Deploy on Amazon Web Services
 - **DigitalOcean**: Use their App Platform or Droplets
 - **Vercel**: For serverless deployment
@@ -332,6 +309,6 @@ If you encounter any issues or have questions:
 
 ---
 
-**Happy Coding!** 🚀
+**Happy Coding...!** 🚀
 
-*Built with ❤️ for developers who want to showcase their work professionally.*
+
